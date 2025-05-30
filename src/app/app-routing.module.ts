@@ -1,30 +1,19 @@
-// app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
-import { ConfigComponent } from './features/config/config.component';
-import { LoginComponent } from './features/auth/login.component';
-import { HomeComponent } from './features/home/home.component';
-import { ApplicationsComponent } from './features/applications/applications.component';
-import { ServicesComponent } from './features/services/services.component';
-import { ServiceWizardComponent } from './features/service-wizard/service-wizard.component';
+import { AuthGuard } from './guards/auth.guard';
+import { ConfigComponent } from './components/config/config.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ApplicationDetailComponent } from './components/application-detail/application-detail.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/config', pathMatch: 'full' },
-  { path: 'config', component: ConfigComponent },
+// FIXED: Export routes so they can be imported elsewhere
+export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: 'applications', pathMatch: 'full' },
-      { path: 'applications', component: ApplicationsComponent },
-      { path: 'services', component: ServicesComponent },
-    ]
-  },
-  { path: 'service-wizard/:serviceId', component: ServiceWizardComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/config' }
+  { path: 'config', component: ConfigComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'app/:appName', component: ApplicationDetailComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/dashboard' }
 ];
 
 @NgModule({
