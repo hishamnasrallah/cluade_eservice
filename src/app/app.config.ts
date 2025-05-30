@@ -12,7 +12,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 
 // FIXED: Import from correct routes file
 import { routes } from './app-routing.module';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

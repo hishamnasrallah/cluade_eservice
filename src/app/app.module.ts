@@ -40,8 +40,8 @@ import { ResourceFormComponent } from './components/application-detail/component
 import { ResourceDetailComponent } from './components/application-detail/components/resource-detail/resource-detail.component';
 import { ManyToManySelectorComponent } from './components/application-detail/components/many-to-many-selector/many-to-many-selector.component';
 
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { AuthGuard } from './core/guards/auth.guard';
 
 @NgModule({
   declarations: [
